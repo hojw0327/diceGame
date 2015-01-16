@@ -6,8 +6,16 @@ public class Judge {
 	
 	int number;
 	
-	public void judge() {
-		
+	private Dice dice;
+	private FraudDice fraudDice;
+	
+	public Judge(Dice dice,FraudDice fraudDice) {
+		this.dice=dice;
+		this.fraudDice=fraudDice;
+	}
+
+	
+	public void gameProgress() {
 		
 		System.out.print("주사위를 몇번 던질것인지 입력하세요:");
 		Scanner stdin = new Scanner(System.in);
@@ -15,20 +23,32 @@ public class Judge {
 
 	}
 	
-	public void winner() {
+	public int fraudPlayerFlag(){
 		
-		Dice dice = new Dice();
-		FraudDice fraudDice = new FraudDice();
-		Player player = new Player();
-		FraudPlayer fraudPlayer = new FraudPlayer();
+		int flag=0;
 		
-		
-		if(dice.sum>fraudDice.sum) {
-			System.out.print("승자는"+player.name);
+		if(dice.outSum()>fraudDice.outSum()){
+			flag=1;
 		}
-		else {
-			System.out.print("승자는"+" "+ fraudPlayer.name);
-
+		else if(fraudDice.outSum()>=(dice.outSum())+6){
+			flag=2;
 		}
+		else{
+			flag=0;
+		}
+		return flag;
+	}
+	
+	public void judge(String playerName, String fraudPlayerName) {
+		
+		System.out.print("승자는 ");
+		
+		if(dice.outSum()>fraudDice.outSum()){
+			System.out.print(playerName);
+		}
+		else if(fraudDice.outSum()>=dice.outSum()){
+			System.out.print(fraudPlayerName);
+		}
+		System.out.println();
 	}
 }

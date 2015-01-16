@@ -2,30 +2,16 @@ package com.maple.diceGame;
 
 public class Recorder {
 	
-	public void nomalRecorder() {
+	public void nomalRecorder(String name,int sum) {
 		
-		Dice dice = new Dice();
-		Player player = new Player();
-		System.out.print(player.name+":"+dice.dice()+" ");
+		System.out.print(name+":"+sum+" ");
 
 	}
 	
-	public void FraudRecorder() {
+	public void FraudRecorder(String name,String level,int sum) {
 		
-		
-		FraudDice fraudDice = new FraudDice();
-		FraudPlayer fraudPlayer = new FraudPlayer();
-		if(fraudPlayer.flag==1){
-			System.out.print(fraudPlayer.name+"[STRONG]"+":"+fraudDice.strongnessMode());
-		}
-		else if(fraudPlayer.flag==2){
-			System.out.print(fraudPlayer.name+"[WEAK]"+":"+fraudDice.weaknessMode());
-		}
-		else {
-			System.out.print(fraudPlayer.name+"[NORMAL]"+":"+fraudDice.dice());
-		}
+		System.out.print(name+level+":"+sum+" ");
 
-		
 	}
 
 }

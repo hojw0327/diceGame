@@ -1,30 +1,48 @@
 package com.maple.diceGame;
 
-public class FraudPlayer {
+public class FraudPlayer{
 	
-	static String name;
-	static int flag = 0;
+	String level;
+	private SetLevel setLevel;
+	private String name;
+	private FraudDice fraudDice;
 	
-	public void playerGame() {
+	public FraudPlayer(FraudDice fraudDice) { //FraudDice가 Dice를 상속받기 때문에 FraudDice의 fraudDice객체만 있어도 Dice의 dice객체 공유 가능
+		//FraudPlayer가 일반 Dice의 주사위를 가질 수 있다는 것. 일반 Player가 가진 주사위를 갖는다는것과는 다르다.
+		this.fraudDice=fraudDice;
+	}
+	
+	public void level(SetLevel setLevel) {
+		this.setLevel = setLevel;
+	}
+	
+
+	public void playerGame(int flag) { 
 		
-		Dice dice = new Dice();
-		FraudDice fraudDice = new FraudDice();
-		
-		if(dice.sum>fraudDice.sum){
-			flag  = 1;
+		if(flag==1){
+			level = "[STRONG]";
 			fraudDice.strongnessMode();
 		}
-		else if(fraudDice.sum>=(dice.sum)+6){
-			flag = 2;
+		else if(flag==2){
+			level = "[WEAK]";
 			fraudDice.weaknessMode();
 
 		}
 		else {
-			flag = 0;
-			fraudDice.nomalMode();
+			level = "[NORMAL]";
+			fraudDice.nomalMode();//fraudDice객체는 Dice클래스 상속 받기 때문에 Dice클래스의 메소드 호출 가능
 		}
 		
 		System.out.println();
+
+	}
+	
+	public void getName(String name){ //이름을 입력받는 메소드
+		this.name=name;
+	}
+	
+	public String outName(){ //이름을 출력하는 메소드
+		return name;
 	}
 
 }
