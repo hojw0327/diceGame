@@ -1,8 +1,12 @@
-package com.maple.diceGame;
+package com.maple.dicegame;
 import static org.junit.Assert.*;
-import java.util.Random;
-import org.junit.Test;
 
+import java.util.Random;
+
+import org.junit.Test;
+import org.springframework.stereotype.Service;
+
+@Service("dice")
 
 public class Dice {
 	
@@ -35,12 +39,7 @@ public class Dice {
 	public int outSum(){
 		return sum;
 	}
-	
-	@Test
-	public void testDice() {
-		
-		int result = randomValue;
-		assertTrue(result>=0);
-	}
+
 }	
+
 

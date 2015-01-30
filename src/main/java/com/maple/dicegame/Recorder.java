@@ -1,4 +1,8 @@
-package com.maple.diceGame;
+package com.maple.dicegame;
+
+import org.springframework.stereotype.Service;
+
+@Service("recorder")
 
 public class Recorder {
 	

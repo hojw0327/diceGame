@@ -1,9 +1,13 @@
-package com.maple.diceGame;
+package com.maple.dicegame;
 import static org.junit.Assert.assertTrue;
+
 
 import java.util.Random;
 
 import org.junit.Test;
+import org.springframework.stereotype.Service;
+
+@Service("fraudDice")
 
 public class FraudDice extends Dice{
 
@@ -32,12 +36,7 @@ public class FraudDice extends Dice{
 		return outSum();
 	}
 	
-	@Test
-	public void testFraudDice() {		
-		int result = randomValue;
-		assertTrue(result>=0);
-	}
-	
 }
+
 
 

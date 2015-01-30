@@ -1,13 +1,22 @@
-package com.maple.diceGame;
+package com.maple.dicegame;
 
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("judge")
+
 public class Judge {
+	
+	@Autowired
+	Dice dice;
+	@Autowired
+	FraudDice fraudDice;
 	
 	int number;
 	
-	private Dice dice;
-	private FraudDice fraudDice;
+
 	
 	public Judge(Dice dice,FraudDice fraudDice) {
 		this.dice=dice;

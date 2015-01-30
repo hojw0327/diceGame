@@ -1,19 +1,21 @@
-package com.maple.diceGame;
+package com.maple.dicegame;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service("fraudPlayer")
 
 public class FraudPlayer{
 	
+	@Autowired
+	FraudDice fraudDice;
+	
 	String level;
-	private SetLevel setLevel;
 	private String name;
-	private FraudDice fraudDice;
 	
 	public FraudPlayer(FraudDice fraudDice) { //FraudDice가 Dice를 상속받기 때문에 FraudDice의 fraudDice객체만 있어도 Dice의 dice객체 공유 가능
 		//FraudPlayer가 일반 Dice의 주사위를 가질 수 있다는 것. 일반 Player가 가진 주사위를 갖는다는것과는 다르다.
 		this.fraudDice=fraudDice;
-	}
-	
-	public void level(SetLevel setLevel) {
-		this.setLevel = setLevel;
 	}
 	
 
@@ -46,3 +48,4 @@ public class FraudPlayer{
 	}
 
 }
+
